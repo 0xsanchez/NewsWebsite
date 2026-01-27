@@ -19,9 +19,12 @@ from django.urls import path
 from django.conf.urls.static import static
 
 from . import settings
+from website.views import get_news_list, get_new_detail
 
 urlpatterns = [
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('news/', get_news_list),
+    path('new/<slug:slug>/', get_new_detail),
 ]
 
 if settings.DEBUG:

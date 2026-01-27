@@ -6,9 +6,48 @@
     <title>News List</title>
 </head>
 <body>
-    {% for new in news %}
-    <img src="{{ url new.image }}" alt="">
-    <h3>{{ new.title }}</h3>
-    {% endfor %}
+    <h1>News</h1>
+    <div class="news">
+        {% for new in news %}
+        <div onclick="window.location.href='/new/{{ new.slug }}/'">
+        <img width="400px" src="{{ new.image.url }}" alt="">
+            <h3>{{ new.title }}</h3>
+        </div>
+
+            {% endfor %}
+    </div>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background-color: rgb(215, 180, 137);
+            padding: 20px 10%;
+        }
+        .news {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .news div {
+            transition: all ease-in-out 0.3s;
+            border: 3px solid rgb(204, 156, 94);
+            border-radius: 15px;
+            padding: 10px;
+            cursor: pointer;
+            width: 400px;
+            }
+        .news div:hover {
+            transform: scale(1.02);
+        }
+        .news div img {
+            border-radius: 15px;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
 </body>
 </html>

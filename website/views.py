@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, News
 
 def get_news_list(request):
-    news_list = News.objects.filter(status='published')
+    news_list = News.objects.filter(status='PB')
     context = {'news': news_list}
     return render(request,'test/news_list.html',context)
 
