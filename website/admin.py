@@ -6,6 +6,7 @@ from .models import Category, News
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name']
+    prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):

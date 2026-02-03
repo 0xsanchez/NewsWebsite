@@ -4,6 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=128)
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.name
@@ -20,10 +21,10 @@ class News(models.Model):
     
     title = models.CharField(max_length=128)
     slug = models.SlugField()
-    category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     body = models.TextField()
     image = models.ImageField(upload_to='news/images/')
-    publish_time = models.DateTimeField(default=timezone.now())
+    publish_time = models.DateTimeField(default=timezone.now)
     updated_time = models.DateTimeField(auto_now=True)
     created_time = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=2,choices=StatusChoices.choices,default=StatusChoices.Draft)
