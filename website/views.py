@@ -1,7 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from .models import Category, News
+from .forms import ContactForm
+
 
 def home(request):
     categories = Category.objects.all()
@@ -9,6 +12,11 @@ def home(request):
     return render(request, 'index.html', context)
 
 def contact(request):
+    form = ContactForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        return HttpResponse('<h1>Succes</h1>')
+
     return render(request, 'contact.html')
 
 def get_news_list(request):

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Category, News
+from .models import Category, News, Contact
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -15,3 +15,7 @@ class NewsAdmin(admin.ModelAdmin):
     
     search_fields = ['title','slug']
     prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email']

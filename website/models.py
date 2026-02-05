@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
+
 class Category(models.Model):
     name = models.CharField(max_length=128)
     slug = models.SlugField(unique=True)
@@ -12,6 +12,18 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
+
+class Contact(models.Model):
+    name = models.CharField(max_length=128)
+    email = models.EmailField(max_length=128)
+    message = models.TextField()
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        ordering = ['-created_at']
 
 class News(models.Model):
 
