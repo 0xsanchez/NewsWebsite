@@ -8,6 +8,9 @@ def home(request):
     context = {'categories': categories}
     return render(request, 'index.html', context)
 
+def contact(request):
+    return render(request, 'contact.html')
+
 def get_news_list(request):
     news_list = News.objects.filter(status='PB')
     context = {'news': news_list}
