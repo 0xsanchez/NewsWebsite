@@ -8,7 +8,12 @@ from .forms import ContactForm
 
 def home(request):
     categories = Category.objects.all()
-    context = {'categories': categories}
+    latest4 = News.objects.filter(status='PB').order_by('-publish_time').iterator(chunk_size=4)
+    context = {
+        'categories': categories,
+        'latest4': latest4,
+        }
+        
     return render(request, 'index.html', context)
 
 def contact(request):
