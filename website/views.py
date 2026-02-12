@@ -8,12 +8,21 @@ from .forms import ContactForm
 
 def home(request):
     categories = Category.objects.all()
-    latest4 = News.objects.filter(status='PB').order_by('-publish_time').iterator(chunk_size=4)
+
+    latest = News.objects.filter(status='PB').order_by('-publish_time').first()
+    latest6 = News.objects.filter(status='PB').order_by('-publish_time').iterator(chunk_size=6)
     context = {
-        'categories': categories,
-        'latest4': latest4,
-        }
-        
+        'latest': latest,
+        'latest6': latest6,
+        'latest_news': {
+            category.slug: {
+                'first': News.objects.filter(status='PB', category__slug=category.slug).first(),
+                 'all': News.objects.filter(status='PB', category=category).order_by('-publish_time')[1:5],
+                }
+            for category in categories
+        },
+    }
+
     return render(request, 'index.html', context)
 
 def contact(request):
@@ -29,11 +38,10 @@ def get_news_list(request):
     context = {'news': news_list}
     return render(request, 'test/news_list.html', context)
 
-def get_new_detail(request, category, slug):
-    category_obj = get_object_or_404(Category, slug=category)
-    news_item = get_object_or_404(News, slug=slug, category=category_obj)
+def get_new_detail(request, slug):
+    news = get_object_or_404(News, slug=slug)
     return render(request, 'test/new_detail.html', {
-        'new': news_item
+        'news': news
     })
 
 def get_news_by_category(request,category):

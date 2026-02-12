@@ -40,7 +40,7 @@
 		<div class="container">
 			<div class="row m-rl--1">
 				<div class="col-md-6 p-rl-1 p-b-2">
-					<div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url(images/post-01.jpg);">
+					<div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url({{ latest.image.url }});">
 						<a href="{% static 'blog-detail-01.html' %}" class="dis-block how1-child1 trans-03"></a>
 
 						<div class="flex-col-e-s s-full p-rl-25 p-tb-20">
@@ -50,7 +50,7 @@
 
 							<h3 class="how1-child2 m-t-14 m-b-10">
 								<a href="{% static 'blog-detail-01.html' %}" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
-									Microsoft quisque at ipsum vel orci eleifend ultrices
+									{{ latest.title }}
 								</a>
 							</h3>
 
@@ -74,7 +74,7 @@
 				<div class="col-md-6 p-rl-1">
 					<div class="row m-rl--1">
 						<div class="col-12 p-rl-1 p-b-2">
-							<div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url(images/post-02.jpg);">
+							<div class="bg-img1 size-a-4 how1 pos-relative" style="background-image: url({% static 'images/post-02.jpg' %});">
 								<a href="{% static 'blog-detail-01.html' %}" class="dis-block how1-child1 trans-03"></a>
 
 								<div class="flex-col-e-s s-full p-rl-25 p-tb-24">
@@ -92,7 +92,7 @@
 						</div>
 
 						<div class="col-sm-6 p-rl-1 p-b-2">
-							<div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url(images/post-03.jpg);">
+							<div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url({% static 'images/post-03.jpg' %});">
 								<a href="{% static 'blog-detail-01.html' %}" class="dis-block how1-child1 trans-03"></a>
 
 								<div class="flex-col-e-s s-full p-rl-25 p-tb-20">
@@ -110,7 +110,7 @@
 						</div>
 
 						<div class="col-sm-6 p-rl-1 p-b-2">
-							<div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url(images/post-04.jpg);">
+							<div class="bg-img1 size-a-5 how1 pos-relative" style="background-image: url({% static 'images/post-04.jpg' %});">
 								<a href="{% static 'blog-detail-01.html' %}" class="dis-block how1-child1 trans-03"></a>
 
 								<div class="flex-col-e-s s-full p-rl-25 p-tb-20">
@@ -138,52 +138,13 @@
 			<div class="row justify-content-center">
 				<div class="col-md-10 col-lg-8">
 					<div class="p-b-20">
-						<!-- Entertainment -->
+						<!-- World -->
 						<div class="tab01 p-b-20">
 							<div class="tab01-head how2 how2-cl1 bocl12 flex-s-c m-r-10 m-r-0-sr991">
 								<!-- Brand tab -->
 								<h3 class="f1-m-2 cl12 tab01-title">
-									Entertainment
+									World
 								</h3>
-
-								<!-- Nav tabs -->
-								<ul class="nav nav-tabs" role="tablist">
-									<li class="nav-item">
-										<a class="nav-link active" data-toggle="tab" href="#tab1-1" role="tab">All</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab1-2" role="tab">Celebrity</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab1-3" role="tab">Movies</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab1-4" role="tab">Music</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab1-5" role="tab">Games</a>
-									</li>
-
-									<li class="nav-item-more dropdown dis-none">
-										<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-											<i class="fa fa-ellipsis-h"></i>
-										</a>
-
-										<ul class="dropdown-menu">
-											
-										</ul>
-									</li>
-								</ul>
-
-								<!--  -->
-								<a href="{% static 'category-01.html' %}" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03">
-									View all
-									<i class="fs-12 m-l-5 fa fa-caret-right"></i>
-								</a>
 							</div>
 								
 
@@ -196,13 +157,13 @@
 											<!-- Item post -->	
 											<div class="m-b-30">
 												<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-05.jpg' %}" alt="IMG">
+													<img src="{{ latest_news.world.first.image.url }}" alt="IMG">
 												</a>
 
 												<div class="p-t-20">
 													<h5 class="p-b-5">
 														<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-															American live music lorem ipsum dolor sit amet consectetur 
+															{{ latest_news.world.first.title }}
 														</a>
 													</h5>
 
@@ -224,16 +185,17 @@
 										</div>
 
 										<div class="col-sm-6 p-r-25 p-r-15-sr991">
+											{% for news in latest_news.world.all %}
 											<!-- Item post -->	
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-06.jpg' %}" alt="IMG">
+													<img src="{{ news.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ news.title }}
 														</a>
 													</h5>
 
@@ -252,64 +214,8 @@
 													</span>
 												</div>
 											</div>
+											{% endfor %}
 											
-											<!-- Item post -->
-											<div class="flex-wr-sb-s m-b-30">
-												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-07.jpg' %}" alt="IMG">
-												</a>
-
-												<div class="size-w-2">
-													<h5 class="p-b-5">
-														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
-														</a>
-													</h5>
-
-													<span class="cl8">
-														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Game
-														</a>
-
-														<span class="f1-s-3 m-rl-3">
-															-
-														</span>
-
-														<span class="f1-s-3">
-															Feb 16
-														</span>
-													</span>
-												</div>
-											</div>
-
-											<!-- Item post -->
-											<div class="flex-wr-sb-s m-b-30">
-												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-08.jpg' %}" alt="IMG">
-												</a>
-
-												<div class="size-w-2">
-													<h5 class="p-b-5">
-														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
-														</a>
-													</h5>
-
-													<span class="cl8">
-														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Celebrity
-														</a>
-
-														<span class="f1-s-3 m-rl-3">
-															-
-														</span>
-
-														<span class="f1-s-3">
-															Feb 12
-														</span>
-													</span>
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -816,48 +722,13 @@
 							</div>
 						</div>
 
-						<!-- Business -->
+						<!-- Sport -->
 						<div class="tab01 p-b-20">
 							<div class="tab01-head how2 how2-cl2 bocl12 flex-s-c m-r-10 m-r-0-sr991">
 								<!-- Brand tab -->
 								<h3 class="f1-m-2 cl13 tab01-title">
-									Business
+									Sport
 								</h3>
-
-								<!-- Nav tabs -->
-								<ul class="nav nav-tabs" role="tablist">
-									<li class="nav-item">
-										<a class="nav-link active" data-toggle="tab" href="#tab2-1" role="tab">All</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab2-2" role="tab">Finance</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab2-3" role="tab">Money & Markets</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab2-4" role="tab">Small Business</a>
-									</li>
-
-									<li class="nav-item-more dropdown dis-none">
-										<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-											<i class="fa fa-ellipsis-h"></i>
-										</a>
-
-										<ul class="dropdown-menu">
-											
-										</ul>
-									</li>
-								</ul>
-
-								<!--  -->
-								<a href="{% static 'category-01.html' %}" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03">
-									View all
-									<i class="fs-12 m-l-5 fa fa-caret-right"></i>
-								</a>
 							</div>
 								
 
@@ -870,13 +741,13 @@
 											<!-- Item post -->	
 											<div class="m-b-30">
 												<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-10.jpg' %}" alt="IMG">
+													<img src="{{ latest_news.sport.first.image.url }}" alt="IMG">
 												</a>
 
 												<div class="p-t-20">
 													<h5 class="p-b-5">
 														<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-															Bitcoin lorem ipsum dolor sit amet consectetur 
+															{{ latest_news.sport.first.title }}
 														</a>
 													</h5>
 
@@ -898,16 +769,17 @@
 										</div>
 
 										<div class="col-sm-6 p-r-25 p-r-15-sr991">
+											{% for news in latest_news.sport.all %}
 											<!-- Item post -->	
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-11.jpg' %}" alt="IMG">
+													<img src="{{ news.image.url }}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ news.title }}
 														</a>
 													</h5>
 
@@ -926,64 +798,7 @@
 													</span>
 												</div>
 											</div>
-											
-											<!-- Item post -->
-											<div class="flex-wr-sb-s m-b-30">
-												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-12.jpg' %}" alt="IMG">
-												</a>
-
-												<div class="size-w-2">
-													<h5 class="p-b-5">
-														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
-														</a>
-													</h5>
-
-													<span class="cl8">
-														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Economy
-														</a>
-
-														<span class="f1-s-3 m-rl-3">
-															-
-														</span>
-
-														<span class="f1-s-3">
-															Feb 16
-														</span>
-													</span>
-												</div>
-											</div>
-
-											<!-- Item post -->
-											<div class="flex-wr-sb-s m-b-30">
-												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-13.jpg' %}" alt="IMG">
-												</a>
-
-												<div class="size-w-2">
-													<h5 class="p-b-5">
-														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
-														</a>
-													</h5>
-
-													<span class="cl8">
-														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Money & Markets
-														</a>
-
-														<span class="f1-s-3 m-rl-3">
-															-
-														</span>
-
-														<span class="f1-s-3">
-															Feb 12
-														</span>
-													</span>
-												</div>
-											</div>
+											{% endfor %}
 										</div>
 									</div>
 								</div>
@@ -1365,52 +1180,13 @@
 							</div>
 						</div>
 
-						<!-- Travel -->
+						<!-- LifeStyle -->
 						<div class="tab01 p-b-20">
 							<div class="tab01-head how2 how2-cl3 bocl12 flex-s-c m-r-10 m-r-0-sr991">
 								<!-- Brand tab -->
 								<h3 class="f1-m-2 cl14 tab01-title">
-									Travel
+									LifeStyle
 								</h3>
-
-								<!-- Nav tabs -->
-								<ul class="nav nav-tabs" role="tablist">
-									<li class="nav-item">
-										<a class="nav-link active" data-toggle="tab" href="#tab3-1" role="tab">All</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab3-2" role="tab">Hotels</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab3-3" role="tab">Flight</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab3-4" role="tab">Beachs</a>
-									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#tab3-5" role="tab">Culture</a>
-									</li>
-
-									<li class="nav-item-more dropdown dis-none">
-										<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-											<i class="fa fa-ellipsis-h"></i>
-										</a>
-
-										<ul class="dropdown-menu">
-											
-										</ul>
-									</li>
-								</ul>
-
-								<!--  -->
-								<a href="{% static 'category-01.html' %}" class="tab01-link f1-s-1 cl9 hov-cl10 trans-03">
-									View all
-									<i class="fs-12 m-l-5 fa fa-caret-right"></i>
-								</a>
 							</div>
 								
 
@@ -1423,13 +1199,13 @@
 											<!-- Item post -->	
 											<div class="m-b-30">
 												<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-14.jpg' %}" alt="IMG">
+													<img src="{{ latest_news.lifestyle.first.image.url }}" alt="IMG">
 												</a>
 
 												<div class="p-t-20">
 													<h5 class="p-b-5">
 														<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-															You wish lorem ipsum dolor sit amet consectetur 
+															{{ latest_news.lifestyle.first.title }} 
 														</a>
 													</h5>
 
@@ -1452,15 +1228,15 @@
 
 										<div class="col-sm-6 p-r-25 p-r-15-sr991">
 											<!-- Item post -->	
+											 {% for news in latest_news.lifestyle.all %}
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-15.jpg' %}" alt="IMG">
+													<img src="{{ news.image.url }}" alt="IMG">
 												</a>
-
 												<div class="size-w-2">
 													<h5 class="p-b-5">
 														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
+															{{ news.title }}
 														</a>
 													</h5>
 
@@ -1479,64 +1255,7 @@
 													</span>
 												</div>
 											</div>
-											
-											<!-- Item post -->
-											<div class="flex-wr-sb-s m-b-30">
-												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-16.jpg' %}" alt="IMG">
-												</a>
-
-												<div class="size-w-2">
-													<h5 class="p-b-5">
-														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
-														</a>
-													</h5>
-
-													<span class="cl8">
-														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Flight
-														</a>
-
-														<span class="f1-s-3 m-rl-3">
-															-
-														</span>
-
-														<span class="f1-s-3">
-															Feb 16
-														</span>
-													</span>
-												</div>
-											</div>
-
-											<!-- Item post -->
-											<div class="flex-wr-sb-s m-b-30">
-												<a href="{% static 'blog-detail-01.html' %}" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="{% static 'images/post-17.jpg' %}" alt="IMG">
-												</a>
-
-												<div class="size-w-2">
-													<h5 class="p-b-5">
-														<a href="{% static 'blog-detail-01.html' %}" class="f1-s-5 cl3 hov-cl10 trans-03">
-															Donec metus orci, malesuada et lectus vitae
-														</a>
-													</h5>
-
-													<span class="cl8">
-														<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-															Culture
-														</a>
-
-														<span class="f1-s-3 m-rl-3">
-															-
-														</span>
-
-														<span class="f1-s-3">
-															Feb 12
-														</span>
-													</span>
-												</div>
-											</div>
+											{% endfor %}
 										</div>
 									</div>
 								</div>
@@ -2200,17 +1919,19 @@
 					</div>
 
 					<div class="row p-t-35">
+							 {% for news in latest6 %}	
+
 						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Item latest -->	
+							<!-- Item latest -->
 							<div class="m-b-45">
 								<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-									<img src="{% static 'images/latest-01.jpg' %}" alt="IMG">
+									<img src="{{ news.image.url }}" alt="IMG">
 								</a>
 
 								<div class="p-t-16">
 									<h5 class="p-b-5">
 										<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
+											{{ news.title }}
 										</a>
 									</h5>
 
@@ -2230,161 +1951,8 @@
 								</div>
 							</div>
 						</div>
+							{% endfor %}
 
-						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Item latest -->	
-							<div class="m-b-45">
-								<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-									<img src="{% static 'images/latest-02.jpg' %}" alt="IMG">
-								</a>
-
-								<div class="p-t-16">
-									<h5 class="p-b-5">
-										<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
-										</a>
-									</h5>
-
-									<span class="cl8">
-										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											Feb 16
-										</span>
-									</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Item latest -->	
-							<div class="m-b-45">
-								<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-									<img src="{% static 'images/latest-03.jpg' %}" alt="IMG">
-								</a>
-
-								<div class="p-t-16">
-									<h5 class="p-b-5">
-										<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
-										</a>
-									</h5>
-
-									<span class="cl8">
-										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											Feb 15
-										</span>
-									</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Item latest -->	
-							<div class="m-b-45">
-								<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-									<img src="{% static 'images/latest-04.jpg' %}" alt="IMG">
-								</a>
-
-								<div class="p-t-16">
-									<h5 class="p-b-5">
-										<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
-										</a>
-									</h5>
-
-									<span class="cl8">
-										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											Feb 13
-										</span>
-									</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Item latest -->	
-							<div class="m-b-45">
-								<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-									<img src="{% static 'images/latest-05.jpg' %}" alt="IMG">
-								</a>
-
-								<div class="p-t-16">
-									<h5 class="p-b-5">
-										<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
-										</a>
-									</h5>
-
-									<span class="cl8">
-										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											Feb 10
-										</span>
-									</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Item latest -->	
-							<div class="m-b-45">
-								<a href="{% static 'blog-detail-01.html' %}" class="wrap-pic-w hov1 trans-03">
-									<img src="{% static 'images/latest-06.jpg' %}" alt="IMG">
-								</a>
-
-								<div class="p-t-16">
-									<h5 class="p-b-5">
-										<a href="{% static 'blog-detail-01.html' %}" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
-										</a>
-									</h5>
-
-									<span class="cl8">
-										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											Feb 09
-										</span>
-									</span>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 
