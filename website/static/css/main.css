@@ -440,7 +440,6 @@ a.left-topbar-item:hover {
 }
 
 .main-menu > li > a::after {
-  content: "\f2f9";
   font-family: Material-Design-Iconic-Font;
   font-size: 16px;
   color: #222;
