@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="category">
+	<h1>{{ category_name }}</h1>
+	<div class="news">
+		{% for new in news %}
+		<a href="{% url 'news_detail' slug=new.slug %}">
+		<div class="new">
+			<img src="{{ new.image.url }}" alt="">
+			<h1>{{ new.title }}</h1>
+		</div>
+		</a>
+		{% endfor %}
+	</div>
+</div>
+
+<style>
+
+.category {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.category h1 {
+    text-align: center;
+    margin-bottom: 30px;
+	font-size: larger;
+}
+
+.news {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.news a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.new {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.new:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.new img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.new h1 {
+    font-size: 18px;
+    padding: 15px;
+}
+</style>
+{% endblock content %}

@@ -1,7 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView, DeleteView
 
-# Create your views here.
+
 from .models import Category, News
 from .forms import ContactForm
 
@@ -40,12 +42,18 @@ def get_news_list(request):
 
 def get_new_detail(request, slug):
     news = get_object_or_404(News, slug=slug)
-    return render(request, 'test/new_detail.html', {
+    return render(request, 'news_detail.html', {
         'news': news
     })
 
 def get_news_by_category(request,category):
     category_obj = get_object_or_404(Category, slug=category)
     news = News.objects.filter(status='PB', category=category_obj)
-    context = {'news': news}
-    return render(request, 'test/news_list.html', context)
+    context = {'news': news, 'category_name': category_obj.name}
+    return render(request, 'category.html', context)
+
+class NewsCreateView(CreateView):
+    model = News
+    template_name = 'crud/news_create.html'
+    fields = ('category', 'title', 'image', 'body', 'status')
+    success_url = reverse_lazy('home_page')

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="main">
+    <h1>Create News</h1>
+    <form method="post" enctype="multipart/form-data" class="news-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<style>
+/* Центрирование контейнера */
+.main {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Заголовок формы */
+.main h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Стили формы */
+.news-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* расстояние между полями */
+    width: 400px;
+}
+
+/* Общие стили для инпутов, textarea и select */
+.news-form input,
+.news-form textarea,
+.news-form select {
+    border: 1px solid #333;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* textarea чуть выше по высоте */
+.news-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Кнопка Submit */
+.news-form button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #17b978;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.news-form button:hover {
+    background-color: #19e795;
+}
+
+/* Плейсхолдер и фокус */
+.news-form input:focus,
+.news-form textarea:focus,
+.news-form select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79,70,229,0.2);
+}
+</style>
+
+{% endblock content %}

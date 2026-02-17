@@ -244,36 +244,33 @@
 
 						<ul class="main-menu">
 							<li class="main-menu-active">
-								<a href="{% static 'index.html' %}">Home</a>
+								<a href="{% url 'home_page' %}">Home</a>
 							</li>
 
 							<li class="mega-menu-item">
-								<a href="{% static 'category-01.html' %}">News</a>
+								<a href="{% url 'news_page' %}">News</a>
 							</li>
 
 							<li class="mega-menu-item">
-								<a href="{% static 'category-02.html' %}">Entertainment </a>
+								<a href="{% url 'category_news' category='world' %}">World</a>
 							</li>
 
 							<li class="mega-menu-item">
-								<a href="{% static 'category-01.html' %}">Business</a>
+								<a href="{% url 'category_news' category='sport' %}">Sport</a>
 							</li>
 
 							<li class="mega-menu-item">
-								<a href="{% static 'category-02.html' %}">Travel</a>
+								<a href="{% url 'category_news' category='technology' %}">Technology</a>
 							</li>
 
 							<li class="mega-menu-item">
-								<a href="{% static 'category-01.html' %}">Life Style</a>
+								<a href="{% url 'category_news' category='lifestyle' %}">Life Style</a>
 							</li>
 
 							<li class="mega-menu-item">
-								<a href="{% static 'category-02.html' %}">Video</a>
+								<a href="{% url 'contact_page' %}">Contact</a>
 							</li>
 
-							<li>
-								<a href="#">Features</a>
-							</li>
 						</ul>
 					</nav>
 				</div>

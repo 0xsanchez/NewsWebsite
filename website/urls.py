@@ -1,10 +1,12 @@
 from django.urls import path
-from website.views import get_news_list, get_new_detail, get_news_by_category, home, contact
+from website.views import get_news_list, get_new_detail, get_news_by_category, home, contact, NewsCreateView
 
 urlpatterns = [
     path('', home, name='home_page'),
     path('contact/',contact, name='contact_page'),
     path('all/', get_news_list, name='news_page'),
-    path('<slug:category>/', get_news_by_category),
-    path('<slug:slug>', get_new_detail)
+    path('category/<slug:category>/', get_news_by_category, name='category_news'),
+    path('news/<slug:slug>', get_new_detail, name='news_detail'),
+    # Crud
+    path('create/', NewsCreateView.as_view(), name='news_create'),
 ]
