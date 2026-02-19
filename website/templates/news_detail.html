@@ -6,6 +6,15 @@
     <img src="{{news.image.url}}" alt="">
     <h2>{{news.title}}</h2>
     <p>{{news.body}}</p>
+    <div class="btns">
+        <a href="{% url 'news_delete' news.slug %}">
+            <button class="del">Delete</button>
+        </a>
+        <a href="{% url 'news_update' news.slug %}">
+            <button class="upd">Update</button>
+        </a>
+    </div>
+
 </div>
 <style>
     .news {
@@ -21,5 +30,27 @@
         font-size: larger;
         text-align: center;
     }
+    button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin: 20px;
+    }
+    .upd {
+        background-color: #17b978;
+    }
+    .del {
+        background-color: rgb(209, 56, 56);
+    }
+    .btns {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+    
 </style>
 {% endblock content %}
