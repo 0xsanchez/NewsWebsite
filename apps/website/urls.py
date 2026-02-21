@@ -1,5 +1,5 @@
 from django.urls import path
-from website.views import get_news_list, get_new_detail, get_news_by_category, home, contact, NewsCreateView, NewsDeleteView, NewsUpdateView
+from apps.website.views import get_news_list, get_new_detail, get_news_by_category, home, contact, NewsCreateView, NewsDeleteView, NewsUpdateView
 
 urlpatterns = [
     path('', home, name='home_page'),
