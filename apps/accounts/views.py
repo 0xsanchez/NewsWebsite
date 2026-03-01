@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
 from .forms import LoginForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout ,authenticate
 # Create your views here.
 def user_login(request):
     if request.method == 'POST':
@@ -22,3 +23,9 @@ def user_login(request):
     form = LoginForm()
     context = {'form': form}
     return render(request, 'accounts/login.html', context)
+
+def user_logout(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return HttpResponseRedirect(reverse('home_page'))
+    return HttpResponse('You\'re not authenticated')

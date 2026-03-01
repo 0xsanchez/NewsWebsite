@@ -14,6 +14,7 @@ def home(request):
     latest = News.objects.filter(status='PB').order_by('-publish_time').first()
     latest6 = News.objects.filter(status='PB').order_by('-publish_time').iterator(chunk_size=6)
     context = {
+        'user': request.user,
         'latest': latest,
         'latest6': latest6,
         'latest_news': {
