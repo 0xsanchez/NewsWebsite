@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Submit</button>
+    </form>
+</div>
+<style>
+.main {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+.main form input,
+.main form select,
+.main form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.main form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76,175,80,0.3);
+}
+
+.main form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main form button:hover {
+    background: #43a047;
+}
+</style>
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="edit-container">
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h2>Edit Profile</h2>
+
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+</div>
+<style>
+    .edit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.edit-container form {
+    width: 400px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.edit-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.edit-container button:hover {
+    background: #43a047;
+}
+</style>
+{% endblock content %}

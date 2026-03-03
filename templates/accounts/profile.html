@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <div class="avatar">
+    {% if request.user.profile.image %}
+        <img src="{{ request.user.profile.image.url }}" alt="avatar">
+    {% else %}
+        <div class="avatar-placeholder">
+            {{ request.user.username|first|upper }}
+        </div>
+    {% endif %}
+</div>
+
+        <div class="info">
+            <h2>{{ request.user.username }}</h2>
+            <p class="email">{{ request.user.email }}</p>
+
+            <div class="bio">
+                {% if request.user.profile.bio %}
+                    <p>{{ request.user.profile.bio }}</p>
+                {% else %}
+                    <p class="empty">No bio yet...</p>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<style>
+    .profile-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.profile-card {
+    background: white;
+    padding: 40px;
+    width: 400px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.info h2 {
+    margin-bottom: 5px;
+}
+
+.email {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.bio {
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.empty {
+    color: #aaa;
+    font-style: italic;
+}
+.avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    color: #555;
+    font-size: 60px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+{% endblock content %}

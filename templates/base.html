@@ -42,11 +42,11 @@
 						</div>
 						<a href="{% url 'logout_page' %}">Logout</a>
 						{% else %}
-						<a href="#" class="left-topbar-item">
+						<a href="{% url 'reg_page' %}" class="left-topbar-item">
 							Sing up
 						</a>
 
-						<a href="#" class="left-topbar-item">
+						<a href="{% url 'login_page' %}" class="left-topbar-item">
 							Log in
 						</a>
 						{% endif %}
